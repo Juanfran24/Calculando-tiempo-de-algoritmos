@@ -15,21 +15,21 @@ public class AlgoritmosBusqueda {
      * @param args the command line arguments
      */
 
+    // revisar
+    public static int busquedaRecursiva(int arreglo[], int numero) {
+        int resultado = 0;
 
-    //revisar
-    public static int busquedaRecursiva(int arreglo[], int numero, int indice){
-        
-        if(indice == arreglo.length){
-            return -1;
-        }else if(arreglo[indice] == numero){
-            return indice;
-        }else{
-            return busquedaRecursiva(arreglo, numero, indice + 1);
+        for (int i = 0; i < arreglo.length; i++) {
+            if(arreglo[i] == numero){
+                resultado = i;
+            }
         }
+
+        return resultado;
 
     }
 
-    public static int busquedaBinaria(int arreglo[], int numero) {
+    public static int busquedaBinariaOrdenada(int arreglo[], int numero) {
         int resultado = -1;
         int primerNum = 0;
         int indexMitad = 0;
@@ -53,6 +53,26 @@ public class AlgoritmosBusqueda {
 
         return resultado;
     }
+
+
+    //============================  PRUEBA BUSQUEDA BINARIA COMO DIJO ALMACHE (NO FUNCIONA) ================================
+    // public static int busquedaBinaria(int[] arreglo, int primerNum, int ultimoNum, int numero) {
+    //     int resultado = -1;
+    //     int indexMitad = (arreglo.length / 2);
+
+    //     if (arreglo.length == 0) {
+    //         return resultado;
+    //     }
+
+    //     if (arreglo[primerNum] == numero) {
+    //         resultado = 0;
+    //     }
+
+    //     busquedaBinaria(arreglo, primerNum, indexMitad, numero);
+    //     busquedaBinaria(arreglo, indexMitad + 1, ultimoNum, numero);
+
+    //     return resultado;
+    // }
 
     public static int busquedaTernaria(int arreglo[], int numero) {
         int resultado = -1;

@@ -2,6 +2,8 @@ import manejadorArreglos.*;
 // import busquedaternaria.BusquedaTernaria;
 import java.util.Scanner;
 import algoritmosBusqueda.*;
+
+import java.util.Date;
 import java.util.Arrays;
 
 /**
@@ -17,9 +19,9 @@ public class main {
         int longitud = 0;
         int numero = 0;
         int resultado = 0;
-        double tiempoInicial = 0;
-        double tiempoFinal = 0;
-        double tiempoTotal = 0;
+        double tiempo1;
+        double tiempo2;
+        String tiempoTotal = "";
 
         System.out.println(
                 "Escoja el algoritmo:\n0-Algoritmo iterativo\n1-Algoritmo busqueda binaria\n2-Algoritmo busqueda ternaria");
@@ -44,12 +46,12 @@ public class main {
                         System.out.println("Escoja el numero a buscar");
                         numero = leer.nextInt();
                         // ACA
-                        tiempoInicial = System.currentTimeMillis();
-                        resultado = AlgoritmosBusqueda.busquedaRecursiva(arreglo, numero, 0);
-                        tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = tiempoFinal - tiempoInicial;
+                        tiempo1 = new Date().getTime();
+                        resultado = AlgoritmosBusqueda.busquedaRecursiva(arreglo, numero);
+                        tiempo2 = new Date().getTime();
+                        tiempoTotal = String.valueOf((tiempo2 - tiempo1)*1000);
                         System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
-                                + " en " + tiempoTotal);
+                                + " en " + tiempoTotal + " segundos");
                     } else {
                         System.out.println("Escoja el tamaño del arreglo");
                         leer = new Scanner(System.in);
@@ -60,12 +62,12 @@ public class main {
                         System.out.println("Escoja el numero a buscar");
                         numero = leer.nextInt();
                         // ACA
-                        tiempoInicial = System.currentTimeMillis();
-                        resultado = AlgoritmosBusqueda.busquedaRecursiva(arreglo, numero, 0);
-                        tiempoFinal = System.currentTimeMillis();
-                        tiempoTotal = tiempoFinal - tiempoInicial;
+                        tiempo1 = new Date().getTime();
+                        resultado = AlgoritmosBusqueda.busquedaRecursiva(arreglo, numero);
+                        tiempo2 = new Date().getTime();
+                        tiempoTotal = String.valueOf((tiempo2 - tiempo1)/1000);
                         System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
-                                + " en " + tiempoTotal);
+                                + " en " + tiempoTotal + " segundos");
                     }
 
                 } else {
@@ -75,21 +77,49 @@ public class main {
             }
 
             case 1: {
-                System.out.println("Escoja el tamaño del arreglo");
-                leer = new Scanner(System.in);
-                longitud = leer.nextInt();
-                arreglo = new int[longitud];
-                arreglo = ManejadorArreglos.arregloOrdenado(arreglo);
-                System.out.println(Arrays.toString(arreglo));
-                System.out.println("Escoja el numero a buscar");
-                numero = leer.nextInt();
-                // ACA
-                tiempoInicial = System.currentTimeMillis();
-                resultado = AlgoritmosBusqueda.busquedaBinaria(arreglo, numero);
-                tiempoFinal = System.currentTimeMillis();
-                tiempoTotal = tiempoFinal - tiempoInicial;
-                System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
-                        + " en " + tiempoTotal);
+                System.out.println("Escoja el orden del arreglo\n0-Ordenado ascendentemente\n1-Aleatorio");
+                opcionOrden = leer.nextInt();
+
+                if (opcionOrden == 0 || opcionOrden == 1) {
+                    if (opcionOrden == 0) {
+                        System.out.println("Escoja el tamaño del arreglo");
+                        leer = new Scanner(System.in);
+                        longitud = leer.nextInt();
+                        arreglo = new int[longitud];
+                        arreglo = ManejadorArreglos.arregloOrdenado(arreglo);
+                        System.out.println(Arrays.toString(arreglo));
+                        System.out.println("Escoja el numero a buscar");
+                        numero = leer.nextInt();
+                        // ACA
+                        tiempo1 = new Date().getTime();
+                        resultado = AlgoritmosBusqueda.busquedaBinariaOrdenada(arreglo, numero);
+                        tiempo2 = new Date().getTime();
+                        tiempoTotal = String.valueOf((tiempo2 - tiempo1)/1000);
+                        System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
+                                + " en " + tiempoTotal + " segundos");
+                    } else {
+                        // System.out.println("Escoja el tamaño del arreglo");
+                        // leer = new Scanner(System.in);
+                        // longitud = leer.nextInt();
+                        // arreglo = new int[longitud];
+                        // arreglo = ManejadorArreglos.arregloAleatorio(arreglo);
+                        // System.out.println(Arrays.toString(arreglo));
+                        // System.out.println("Escoja el numero a buscar");
+                        // numero = leer.nextInt();
+                        // // ACA
+                        // tiempoInicial = System.currentTimeMillis();
+                        // resultado = AlgoritmosBusqueda.busquedaBinaria(arreglo, 0, arreglo.length-1,
+                        // numero);
+                        // tiempoFinal = System.currentTimeMillis();
+                        // tiempoTotal = tiempoFinal - tiempoInicial;
+                        // System.out.println("El numero " + numero + " fue encontrado en la posición "
+                        // + resultado
+                        // + " en " + tiempoTotal + " segundos");
+                        System.out.println("en construcción");
+                    }
+                } else {
+                    System.out.println("Numero erroneo");
+                }
 
                 break;
             }
@@ -104,12 +134,12 @@ public class main {
                 System.out.println("Escoja el numero a buscar");
                 numero = leer.nextInt();
                 // ACA
-                tiempoInicial = System.currentTimeMillis();
+                tiempo1 = new Date().getTime();
                 resultado = AlgoritmosBusqueda.busquedaTernaria(arreglo, numero);
-                tiempoFinal = System.currentTimeMillis();
-                tiempoTotal = tiempoFinal - tiempoInicial;
+                tiempo2 = new Date().getTime();
+                tiempoTotal = String.valueOf((tiempo2 - tiempo1)/1000);
                 System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
-                        + " en " + tiempoTotal);
+                        + " en " + tiempoTotal + " segundos");
 
                 break;
             }
