@@ -1,4 +1,5 @@
 package manejadorArreglos;
+
 import java.util.Random;
 
 /**
@@ -7,11 +8,11 @@ import java.util.Random;
  */
 
 public class ManejadorArreglos {
-    
+
     static Random rnd = new Random();
 
-    public static int[] arregloOrdenado(int[] arreglo){
-        
+    public static int[] arregloOrdenado(int[] arreglo) {
+
         for (int i = 0; i < arreglo.length; i++) {
             arreglo[i] = i + 1;
         }
@@ -19,23 +20,12 @@ public class ManejadorArreglos {
         return arreglo;
     }
 
-    public static int[] arregloAleatorio(int[] arreglo){
-        int numAleatorio = 0; 
-        // boolean seEncuentra = false;
+    public static int[] arregloAleatorio(int[] arreglo) {
+        int numAleatorio = 0;
 
         for (int i = 0; i < arreglo.length; i++) {
             numAleatorio = rnd.nextInt(arreglo.length - 1);
-
-            // for(int j = 0; j < arreglo.length; j++){
-
-            //     if(numAleatorio == arreglo[j]){
-            //         seEncuentra = true;
-            //     }
-            // }
-
-            // if(!seEncuentra){
-                arreglo[i] = numAleatorio;
-            // }
+            arreglo[i] = numAleatorio;
         }
 
         return arreglo;

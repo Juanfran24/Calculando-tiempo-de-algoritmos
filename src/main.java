@@ -49,7 +49,7 @@ public class main {
                         tiempo1 = new Date().getTime();
                         resultado = AlgoritmosBusqueda.busquedaRecursiva(arreglo, numero);
                         tiempo2 = new Date().getTime();
-                        tiempoTotal = String.valueOf((tiempo2 - tiempo1)*1000);
+                        tiempoTotal = String.valueOf((tiempo2 - tiempo1)/1000);
                         System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
                                 + " en " + tiempoTotal + " segundos");
                     } else {
@@ -92,30 +92,27 @@ public class main {
                         numero = leer.nextInt();
                         // ACA
                         tiempo1 = new Date().getTime();
-                        resultado = AlgoritmosBusqueda.busquedaBinariaOrdenada(arreglo, numero);
+                        resultado = AlgoritmosBusqueda.busquedaBinaria(arreglo, 0, arreglo.length, numero);
                         tiempo2 = new Date().getTime();
                         tiempoTotal = String.valueOf((tiempo2 - tiempo1)/1000);
                         System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
                                 + " en " + tiempoTotal + " segundos");
                     } else {
-                        // System.out.println("Escoja el tamaño del arreglo");
-                        // leer = new Scanner(System.in);
-                        // longitud = leer.nextInt();
-                        // arreglo = new int[longitud];
-                        // arreglo = ManejadorArreglos.arregloAleatorio(arreglo);
-                        // System.out.println(Arrays.toString(arreglo));
-                        // System.out.println("Escoja el numero a buscar");
-                        // numero = leer.nextInt();
-                        // // ACA
-                        // tiempoInicial = System.currentTimeMillis();
-                        // resultado = AlgoritmosBusqueda.busquedaBinaria(arreglo, 0, arreglo.length-1,
-                        // numero);
-                        // tiempoFinal = System.currentTimeMillis();
-                        // tiempoTotal = tiempoFinal - tiempoInicial;
-                        // System.out.println("El numero " + numero + " fue encontrado en la posición "
-                        // + resultado
-                        // + " en " + tiempoTotal + " segundos");
-                        System.out.println("en construcción");
+                        System.out.println("Escoja el tamaño del arreglo");
+                        leer = new Scanner(System.in);
+                        longitud = leer.nextInt();
+                        arreglo = new int[longitud];
+                        arreglo = ManejadorArreglos.arregloAleatorio(arreglo);
+                        System.out.println(Arrays.toString(arreglo));
+                        System.out.println("Escoja el numero a buscar");
+                        numero = leer.nextInt();
+                        // ACA
+                        tiempo1 = new Date().getTime();
+                        resultado = AlgoritmosBusqueda.busquedaBinaria(arreglo, 0, arreglo.length, numero);
+                        tiempo2 = new Date().getTime();
+                        tiempoTotal = String.valueOf((tiempo2 - tiempo1)/1000);
+                        System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
+                                + " en " + tiempoTotal + " segundos");
                     }
                 } else {
                     System.out.println("Numero erroneo");
@@ -135,7 +132,7 @@ public class main {
                 numero = leer.nextInt();
                 // ACA
                 tiempo1 = new Date().getTime();
-                resultado = AlgoritmosBusqueda.busquedaTernaria(arreglo, numero);
+                resultado = AlgoritmosBusqueda.busquedaTernaria(arreglo, 0, arreglo.length - 1, numero);
                 tiempo2 = new Date().getTime();
                 tiempoTotal = String.valueOf((tiempo2 - tiempo1)/1000);
                 System.out.println("El numero " + numero + " fue encontrado en la posición " + resultado
