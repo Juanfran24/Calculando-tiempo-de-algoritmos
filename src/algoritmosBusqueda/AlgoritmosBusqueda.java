@@ -15,12 +15,11 @@ public class AlgoritmosBusqueda {
      * @param args the command line arguments
      */
 
-    // revisar
     public static int busquedaRecursiva(int arreglo[], int numero) {
         int resultado = 0;
 
         for (int i = 0; i < arreglo.length; i++) {
-            if(arreglo[i] == numero){
+            if (arreglo[i] == numero) {
                 resultado = i;
             }
         }
@@ -29,83 +28,59 @@ public class AlgoritmosBusqueda {
 
     }
 
-    public static int busquedaBinariaOrdenada(int arreglo[], int numero) {
+    public static int busquedaBinaria(int arreglo[], int primerNum, int ultimoNum,int numero) {
         int resultado = -1;
-        int primerNum = 0;
         int indexMitad = 0;
         int numeroEnMitad = 0;
-        int ultimoNum = arreglo.length - 1;
 
-        while (primerNum <= ultimoNum) {
+        if (ultimoNum >= primerNum) {
             indexMitad = primerNum + (ultimoNum - primerNum) / 2;
             numeroEnMitad = arreglo[indexMitad];
 
             if (numeroEnMitad == numero) {
-                resultado = indexMitad;
+                return resultado = indexMitad;
             }
 
-            if (numeroEnMitad < numero) {
-                primerNum = indexMitad + 1;
+            if (numeroEnMitad > numero) {
+                return busquedaBinaria(arreglo, primerNum, indexMitad - 1, numero);
             } else {
-                ultimoNum = indexMitad - 1;
+                return busquedaBinaria(arreglo, indexMitad + 1, ultimoNum, numero);
             }
+            
         }
-
+        
         return resultado;
     }
 
-
-    //============================  PRUEBA BUSQUEDA BINARIA COMO DIJO ALMACHE (NO FUNCIONA) ================================
-    // public static int busquedaBinaria(int[] arreglo, int primerNum, int ultimoNum, int numero) {
-    //     int resultado = -1;
-    //     int indexMitad = (arreglo.length / 2);
-
-    //     if (arreglo.length == 0) {
-    //         return resultado;
-    //     }
-
-    //     if (arreglo[primerNum] == numero) {
-    //         resultado = 0;
-    //     }
-
-    //     busquedaBinaria(arreglo, primerNum, indexMitad, numero);
-    //     busquedaBinaria(arreglo, indexMitad + 1, ultimoNum, numero);
-
-    //     return resultado;
-    // }
-
-    public static int busquedaTernaria(int arreglo[], int numero) {
+    public static int busquedaTernaria(int arreglo[], int primerNum, int ultimoNum,int numero) {
         int resultado = -1;
-        int primerNum = 0;
         int indexMitad1 = 0;
         int indexMitad2 = 0;
         int numeroEnMitad1 = 0;
         int numeroEnMitad2 = 0;
-        int ultimoNum = arreglo.length - 1;
 
-        while (primerNum <= ultimoNum) {
+        if (primerNum <= ultimoNum) {
             indexMitad1 = primerNum + (ultimoNum - primerNum) / 3;
             indexMitad2 = ultimoNum - (ultimoNum - primerNum) / 3;
             numeroEnMitad1 = arreglo[indexMitad1];
             numeroEnMitad2 = arreglo[indexMitad2];
 
             if (numeroEnMitad1 == numero) {
-                resultado = indexMitad1;
+                return resultado = indexMitad1;
             }
 
             if (numeroEnMitad2 == numero) {
-                resultado = indexMitad2;
+                return resultado = indexMitad2;
             }
 
             if (numeroEnMitad1 > numero) {
-                ultimoNum = indexMitad1 - 1;
+                return busquedaTernaria(arreglo, primerNum, indexMitad1 - 1, numero);
 
             } else if (numeroEnMitad2 < numero) {
-                primerNum = indexMitad2 + 1;
+                return busquedaTernaria(arreglo, indexMitad2 + 1, ultimoNum, numero);
 
             } else {
-                primerNum = indexMitad1 + 1;
-                ultimoNum = indexMitad2 - 1;
+                return busquedaTernaria(arreglo, indexMitad1 + 1, indexMitad2 - 1, numero);
             }
         }
 
